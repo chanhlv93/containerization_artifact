@@ -1,19 +1,17 @@
 {
-  "AWSEBDockerrunVersion": "1",
-  "Image": {
-    "Name": "janedoe/image",
-    "Update": "true"
-  },
-  "Ports": [
-    {
-      "ContainerPort": "1234"
-    }
-  ],
-  "Volumes": [
-    {
-      "HostDirectory": "/var/app/mydb",
-      "ContainerDirectory": "/etc/mysql"
-    }
-  ],
-  "Logging": "/var/log/nginx"
+   "AWSEBDockerrunVersion": "2",
+   "containerDefinitions": [
+      {
+         "name": "pyuwgapinp-50603",
+         "image": "chanhlv93/6326f4e9-495d-4a78-b92d-24b033a3921a",
+         "essential": true,
+         "memory": 128,
+         "portMappings": [
+            {
+               "hostPort": 80,
+               "containerPort": 8080
+            }
+         ]
+      }
+   ]
 }
