@@ -2,7 +2,7 @@
    "AWSEBDockerrunVersion": "2",
    "containerDefinitions": [
       {
-         "name": "zlbgdsoqgb-72408",
+         "name": "gtuedhbkha-52818",
          "image": "chanhlv93/f635baa0-b639-4e8f-b65a-88bc2c0c62bc",
          "essential": true,
          "memory": 128,
