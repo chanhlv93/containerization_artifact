@@ -2,14 +2,35 @@
    "AWSEBDockerrunVersion": "2",
    "containerDefinitions": [
       {
-         "name": "inmlrurpej-71775",
-         "image": "chanhlv93/f635baa0-b639-4e8f-b65a-88bc2c0c62bc",
+         "name": "fplay",
+         "image": "chanhlv93/fplay",
          "essential": true,
          "memory": 128,
          "portMappings": [
             {
                "hostPort": 80,
                "containerPort": 8080
+            }
+         ],
+         "links": [
+            "mysql"
+         ]
+      },
+      {
+         "name": "mysql",
+         "image": "chanhlv93/mysql",
+         "enviroment": [
+            {
+               "name": "MYSQL_ROOT_PASSWORD",
+               "value": "123456"
+            }
+         ],
+         "essential": true,
+         "memory": 128,
+         "portMappings": [
+            {
+               "hostPort": 3306,
+               "containerPort": 3306
             }
          ]
       }
