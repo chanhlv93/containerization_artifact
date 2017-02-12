@@ -2,35 +2,70 @@
    "AWSEBDockerrunVersion": "2",
    "containerDefinitions": [
       {
-         "name": "fplay",
-         "image": "chanhlv93/fplay",
+         "name": "vote",
+         "image": "docker/example-voting-app-vote",
          "essential": true,
          "memory": 128,
          "portMappings": [
             {
-               "hostPort": 80,
-               "containerPort": 8080
+               "hostPort": 5000,
+               "containerPort": 80
             }
          ],
          "links": [
-            "mysql"
+            "redis"
          ]
       },
       {
-         "name": "mysql",
-         "image": "chanhlv93/mysql",
-         "enviroment": [
-            {
-               "name": "MYSQL_ROOT_PASSWORD",
-               "value": "123456"
-            }
-         ],
+         "name": "result",
+         "image": "docker/example-voting-app-result",
          "essential": true,
          "memory": 128,
          "portMappings": [
             {
-               "hostPort": 3306,
-               "containerPort": 3306
+               "hostPort": 5001,
+               "containerPort": 80
+            },
+            {
+               "hostPort": 5858,
+               "containerPort": 5858
+            }
+         ],
+         "links": [
+            "db"
+         ]
+      },
+      {
+         "name": "worker",
+         "image": "docker/example-voting-app-worker",
+         "essential": true,
+         "memory": 128,
+         "links": [
+            "db",
+            "redis"
+         ]
+      },
+      {
+         "name": "redis",
+         "image": "redis:alpine",
+         "essential": true,
+         "memory": 128,
+         "portMappings": [
+            {
+               "hostPort": 6379,
+               "containerPort": 6379
+            }
+         ]
+      },
+      {
+         "name": "db",
+         "image": "postgres:9.4",
+         "essential": true,
+         "memory": 128,
+         "portMappings": [
+            {
+               "hostPort": 5524,
+               "containerPort": 5524
             }
          ]
       }
