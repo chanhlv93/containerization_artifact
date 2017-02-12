@@ -3,7 +3,7 @@
    "containerDefinitions": [
       {
          "name": "vote",
-         "image": "docker/example-voting-app-vote",
+         "image": "chanhlv93/docker-voting",
          "essential": true,
          "memory": 128,
          "portMappings": [
@@ -18,7 +18,7 @@
       },
       {
          "name": "result",
-         "image": "docker/example-voting-app-result",
+         "image": "chanhlv93/docker-result",
          "essential": true,
          "memory": 128,
          "portMappings": [
@@ -37,7 +37,7 @@
       },
       {
          "name": "worker",
-         "image": "docker/example-voting-app-worker",
+         "image": "chanhlv93/docker-worker",
          "essential": true,
          "memory": 128,
          "links": [
